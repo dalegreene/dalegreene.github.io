@@ -505,12 +505,13 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.getElementsByClassName('mover');
+  // ARRAY CREATED FOR PHASE FUNCTION FOR USE IN LOOP
   var phase = [];
+  // PHASE LINE TAKEN OUT OF MAIN LOOP SINCE VALUE ONLY CHANGED 5 TIMES
   for (var i = 0; i < 5; i++) {
     phase[i] = Math.sin((document.body.scrollTop / 1250) + (i % 5));
   }
   for (var i = 0; i < items.length; i++) {
-    
     items[i].style.left = items[i].basicLeft + 100 * phase[i%5] + 'px';
   }
 
@@ -532,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
 
-  // Moved elem child nodes outside of loop since they weren't changed
+  // MOVED ELEM CHILD NODES OUTSIDE OF LOOP SINCE THEY WEREN'T CHANGED
   var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -541,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
   for (var i = 0; i < 20; i++) { // DECREASED THE NUMBER OF PIZZAS TO DRAW ON SCREEN
-    var newelem = elem.cloneNode(true); // Cloned elem node so that the appendChild call would draw all pizzas
+    var newelem = elem.cloneNode(true); // CLONED ELEM NODE SO THAT THE APPENDCHILD CALL WOULD DRAW ALL PIZZAS
     newelem.basicLeft = (i % cols) * s;
     newelem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.getElementById("movingPizzas1").appendChild(newelem);
